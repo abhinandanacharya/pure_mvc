@@ -1,0 +1,13 @@
+.card-area {
+    margin-top: 8rem;
+}
+.card-area .card{
+    width: 20rem;
+}
+header{
+    margin-left: 10px;
+}
+.card-img-top img{
+    width: 280px;
+    height: 180px;
+}

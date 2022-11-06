@@ -8,6 +8,7 @@ class Product extends Controller{
     
     public function __construct($model)
     {
+        $this->Auth('id');
         $this->schema = $this->model(strtolower($model));
     }
 

@@ -12,11 +12,12 @@ function loadApplication()
      */
     $file  = ($url[0] == '') ? 'home' : $url[0];
     $action  = ($url[1] == '')? 'index' : $url[1];
+    $args  = ($url[2] == '')? 'index' : $url[2];
     if (file_exists(CONTROLLER . $file . ".php")) {
         require_once CONTROLLER . $file . ".php";
         $file = ucfirst($file);
-        $instance  = new $file($file);
-        print $instance->$action();
+        $instance  = new $file();
+        print $instance->$action($args);
     } else {
         echo "404";
     }
