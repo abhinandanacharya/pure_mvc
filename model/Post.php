@@ -20,10 +20,15 @@ class post_model extends Model {
         if($id != '') $query .= " where id ='".$id."'";
         $res =  $this->show_data($query);
         if(!empty($res)){
+             $res[0]['postedby'] = $this->author($res[0]['author']); 
              return HTTP_RESPONSE->success_200($res);
         }else{
             return HTTP_RESPONSE->failure_400(0,"Post not found");
         }
+    }
+
+    public function author($id){
+        return $this->show_data("select name from user where id = $id")[0]['name'];
     }
 }
 ?>

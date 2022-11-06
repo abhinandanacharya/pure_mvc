@@ -10,9 +10,9 @@ class Post extends Controller
         $this->data['title'] = 'Posts';
         $this->data['source'] = "post";
         $Post = $this->model('Post');
-        
+
         $this->data['posts'] = $Post->getPosts();
-        
+
         $this->view('posts/index');
     }
 
@@ -36,16 +36,18 @@ class Post extends Controller
         $this->view('posts/write');
     }
 
-    public function readmore($id = ''){
-        if($id != ''){
-           $this->data['title'] = 'Single Post View';
-           $Post = $this->model("Post");
-           $response = $Post->getPosts($id);
-           if($response['status'] == 200){
+    public function readmore($id = '')
+    {
+        if ($id != '') {
+            $this->data['source'] = "post";
+            $this->data['title'] = 'Single Post View';
+            $Post = $this->model("Post");
+            $response = $Post->getPosts($id);
+            if ($response['status'] == 200) {
                 $this->data['title'] = $response['data'][0]['title'];
             }
             $this->data['post'] = $response;
-        }else{
+        } else {
             $this->redirect('post');
         }
         $this->view('posts/single_post');

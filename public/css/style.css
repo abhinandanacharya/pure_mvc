@@ -11,3 +11,12 @@ header{
     width: 280px;
     height: 180px;
 }
+.post-cover{
+    text-align: center;
+}
+.post-meta{
+    margin-top: 50px;
+}
+.post-content{
+    margin-top: 80px;
+}
