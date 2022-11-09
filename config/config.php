@@ -1,9 +1,4 @@
 <?php
-include('./service/response.php');
-$response = new Response();
-define('HTTP_RESPONSE', $response);
-
-
 define('SITE_URL','http://localhost/phpdevtools/pure_mvc/');
 define('CONTROLLER',dirname(__DIR__).'/controller/');
 define('MODEL',dirname(__DIR__).'/model/');

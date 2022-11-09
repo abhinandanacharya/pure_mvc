@@ -15,7 +15,7 @@ class MainController{
         return  new $model();
     }
 
-    public function redirect($path) {
+    public function redirect($path = '')  {
         header("location:".SITE_URL.$path);
     }
 

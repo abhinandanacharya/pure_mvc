@@ -1,4 +1,5 @@
 <?php
+include('./service/response.php');
 class Model
 {
 	public $host= HOST;
@@ -6,8 +7,10 @@ class Model
 	public $password=PASSWORD;
 	public $dbname=DB;
 	public $conn;
+	public $httpResponse;
 	public function __construct()
 	{
+		$this->httpResponse = new Response();
 		$this->conn = new mysqli($this->host,$this->username,$this->password,$this->dbname);
 	}
 	public function insert($qry)

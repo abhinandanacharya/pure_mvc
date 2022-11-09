@@ -13,14 +13,14 @@ class Auth extends Controller
                 $Auth =  $this->model('Auth');
                 $response = $Auth->login($_POST);
                 if ($response['status'] == 200) {
-                    $this->redirect("product/index");
+                    $this->redirect("home");
                 } else {
                     $this->data['response'] = $response;
                 }
             }
             $this->view("auth/login");
         } else {
-            $this->redirect("product/index");
+            $this->redirect("home");
         }
     }
 
@@ -44,5 +44,11 @@ class Auth extends Controller
         } else {
             $this->redirect("product/index");
         }
+    }
+
+    public function logout(){
+        session_unset();
+        session_destroy();
+        $this->redirect();
     }
 }

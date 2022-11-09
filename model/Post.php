@@ -6,12 +6,12 @@ class post_model extends Model {
             $query = "INSERT INTO posts SET title = '".$data['title']."',short_dec ='".$data['short_desc']."',content ='".$data['content']."', cover ='".$file."', author = ".$id.", date ='". date('Y-m-d')."', category ='".$data['category']."'";
             $res = $this->insert($query);
             if($res){
-                return HTTP_RESPONSE->success_200($res,"Post Added");
+                return $this->httpResponse->success_200($res,"Post Added");
             }else{
-                return HTTP_RESPONSE->failure_400(0,"Something went wrong!");
+                return $this->httpResponse->failure_400(0,"Something went wrong!");
             }
         }else{
-            return HTTP_RESPONSE->failure_500();
+            return $this->httpResponse->failure_500();
         }
     }
 
@@ -21,9 +21,9 @@ class post_model extends Model {
         $res =  $this->show_data($query);
         if(!empty($res)){
              $res[0]['postedby'] = $this->author($res[0]['author']); 
-             return HTTP_RESPONSE->success_200($res);
+             return $this->httpResponse->success_200($res);
         }else{
-            return HTTP_RESPONSE->failure_400(0,"Post not found");
+            return $this->httpResponse->failure_400(0,"Post not found");
         }
     }
 

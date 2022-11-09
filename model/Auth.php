@@ -14,18 +14,18 @@ class auth_model extends Model {
     public function register($data = ''){
         if(is_array($data) && !empty($data)){
             if($this->isExist($data['email'],'email')){
-                return HTTP_RESPONSE->failure_422($data['email'],"Email already exist");
+                return $this->httpResponse->failure_422($data['email'],"Email already exist");
             }else{
                 $query = "INSERT INTO user SET email = '".$data['email']."', password = '".$data['password']."'";
                 $res = $this->insert($query);
                 if($res){
-                    return HTTP_RESPONSE->success_200('','Register Success');  
+                    return $this->httpResponse->success_200('','Register Success');  
                 }else{
-                    return HTTP_RESPONSE->failure_400("","Something Wrong!");
+                    return $this->httpResponse->failure_400("","Something Wrong!");
                 }
             }
         }else{
-           return HTTP_RESPONSE->failure_500();
+           return $this->httpResponse->failure_500();
         }
     }
 
@@ -34,12 +34,12 @@ class auth_model extends Model {
             $user = $this->show_data("select * from user where email ='".$data['email']."' and password = '".$data['password']."'");
             if(!empty($user)){
                 $_SESSION['Auth'] = $user[0];
-                return HTTP_RESPONSE->success_200('','Login Success');  
+                return $this->httpResponse->success_200('','Login Success');  
             }else{
-                return HTTP_RESPONSE->failure_400("","Incorrect email or password");
+                return $this->httpResponse->failure_400("","Incorrect email or password");
             }
         }else{
-            return HTTP_RESPONSE->failure_400("","Something Wrong!");
+            return $this->httpResponse->failure_400("","Something Wrong!");
         }
     }
 }

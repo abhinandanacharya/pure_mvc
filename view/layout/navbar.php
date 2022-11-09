@@ -13,9 +13,15 @@
             <li class="nav-item">
                 <a class="nav-link <?=($source == 'post')? 'active' : '' ?>" href="<?=SITE_URL?>post">Posts</a>
             </li>
+            <?php if(isset($_SESSION['Auth'])){ ?>
             <li class="nav-item">
-                <a class="nav-link <?=($source == 'account')? 'active' : '' ?>" href="<?=SITE_URL?>auth/account">Account</a>
+                <a class="nav-link <?=($source == 'logout')? 'active' : '' ?>" href="<?=SITE_URL?>auth/logout">Logout</a>
             </li>
+            <?php }else { ?>
+                <li class="nav-item">
+                <a class="nav-link" href="<?=SITE_URL?>auth/">Login</a>
+            </li>
+            <?php } ?>
         </ul>
 
     </div>
